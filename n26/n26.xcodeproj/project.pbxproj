@@ -166,6 +166,7 @@
 		2BE5F51C20BD6EBF00CC1DF8 /* n26 */ = {
 			isa = PBXGroup;
 			children = (
+				2BE5F56D20BD85C900CC1DF8 /* modules */,
 				2BE5F51D20BD6EBF00CC1DF8 /* AppDelegate.swift */,
 				2BE5F51F20BD6EBF00CC1DF8 /* ViewController.swift */,
 				2BE5F52120BD6EBF00CC1DF8 /* Main.storyboard */,
@@ -179,6 +180,10 @@
 		2BE5F53120BD6EBF00CC1DF8 /* n26Tests */ = {
 			isa = PBXGroup;
 			children = (
+				2BE5F57620BD864500CC1DF8 /* remotedata */,
+				2BE5F57520BD863400CC1DF8 /* datetime */,
+				2BE5F57420BD862C00CC1DF8 /* data */,
+				2BE5F57320BD862000CC1DF8 /* persistance */,
 				2BE5F53220BD6EBF00CC1DF8 /* n26Tests.swift */,
 				2BE5F53420BD6EBF00CC1DF8 /* Info.plist */,
 			);
@@ -215,6 +220,81 @@
 				2BE5F56720BD7C6D00CC1DF8 /* Quick.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2BE5F56D20BD85C900CC1DF8 /* modules */ = {
+			isa = PBXGroup;
+			children = (
+				2BE5F57220BD85F200CC1DF8 /* ui */,
+				2BE5F57120BD85E800CC1DF8 /* persistance */,
+				2BE5F57020BD85E000CC1DF8 /* remotedata */,
+				2BE5F56F20BD85D900CC1DF8 /* data */,
+				2BE5F56E20BD85D200CC1DF8 /* datetime */,
+			);
+			path = modules;
+			sourceTree = "<group>";
+		};
+		2BE5F56E20BD85D200CC1DF8 /* datetime */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = datetime;
+			sourceTree = "<group>";
+		};
+		2BE5F56F20BD85D900CC1DF8 /* data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		2BE5F57020BD85E000CC1DF8 /* remotedata */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = remotedata;
+			sourceTree = "<group>";
+		};
+		2BE5F57120BD85E800CC1DF8 /* persistance */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = persistance;
+			sourceTree = "<group>";
+		};
+		2BE5F57220BD85F200CC1DF8 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		2BE5F57320BD862000CC1DF8 /* persistance */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = persistance;
+			sourceTree = "<group>";
+		};
+		2BE5F57420BD862C00CC1DF8 /* data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		2BE5F57520BD863400CC1DF8 /* datetime */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = datetime;
+			sourceTree = "<group>";
+		};
+		2BE5F57620BD864500CC1DF8 /* remotedata */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = remotedata;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
