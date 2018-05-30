@@ -48,8 +48,8 @@ enum EndPoint: String {
 class DataManager: NSObject, DataControllerPrototcol {
     let persistenceManager: PersistenceControllerProtocol
     let dataSession: URLSessionProtocol
-    let locationsHandler: AnyMapper<Mapped<[LocationRaw]>>
-    let localleHandler: AnyMapper<Mapped<LocalleRaw>>
+    //let locationsHandler: AnyMapper<Mapped<[LocationRaw]>>
+    let bpiHandler: AnyMapper<Mapped<LocalleRaw>>
     
     private let scheme: String = "https"
     private let host: String = "s3-ap-southeast-2.amazonaws.com"
