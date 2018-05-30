@@ -7,13 +7,13 @@
         <attribute name="rate" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="updatedISO" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
-    <entity name="History" representedClassName="History" syncable="YES" codeGenerationType="class">
+    <entity name="History" representedClassName="History" syncable="YES">
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="timedelta" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="pairs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CurrencyMap" syncable="YES"/>
     </entity>
     <elements>
         <element name="CurrencyMap" positionX="-900" positionY="-18" width="128" height="118"/>
-        <element name="History" positionX="-1233" positionY="9" width="128" height="88"/>
+        <element name="History" positionX="-1233" positionY="9" width="128" height="90"/>
     </elements>
 </model>

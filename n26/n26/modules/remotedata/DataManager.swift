@@ -10,9 +10,9 @@ import UIKit
 import Foundation
 
 protocol DataControllerPrototcol {
-    func fetchLocations()
-    func fetchLocationData(for locationId: Int64)
-    func fetchAvatarData(for profileId: Int64, forImageView imgView: UIImageView) -> UIImage?
+//    func fetchLocations()
+//    func fetchLocationData(for locationId: Int64)
+//    func fetchAvatarData(for profileId: Int64, forImageView imgView: UIImageView) -> UIImage?
 }
 
 enum SessionType {
@@ -48,8 +48,7 @@ enum EndPoint: String {
 class DataManager: NSObject, DataControllerPrototcol {
     let persistenceManager: PersistenceControllerProtocol
     let dataSession: URLSessionProtocol
-    //let locationsHandler: AnyMapper<Mapped<[LocationRaw]>>
-    let bpiHandler: AnyMapper<Mapped<LocalleRaw>>
+    let bpiHandler: AnyMapper<Mapped<CurrencyRaw>>
     
     private let scheme: String = "https"
     private let host: String = "s3-ap-southeast-2.amazonaws.com"
@@ -61,12 +60,10 @@ class DataManager: NSObject, DataControllerPrototcol {
     ///     - networkManager: an object conforming to the URLSessionProtocol that fetches data
     ///     - configuration: a enumeration defining the tyle of sessiopersistenceManagern, in this case default
     ///     - locationParser: a object conforming to the JSONMapper protocol passed as Type Erased object as we use associated types in the protocol
-    ///     - localleParser: a object conforming to the JSONMapper protocol passed as Type Erased object as we use associated types in the protocol
-    required init(storeManager: PersistenceControllerProtocol, urlSession: URLSessionProtocol, configuration: SessionType = .sharedSession, locationParser: AnyMapper<Mapped<[LocationRaw]>>, localleParser: AnyMapper<Mapped<LocalleRaw>>) {
+    required init(storeManager: PersistenceControllerProtocol, urlSession: URLSessionProtocol, configuration: SessionType = .sharedSession, bpiParser: AnyMapper<Mapped<CurrencyRaw>>) {
        persistenceManager = storeManager
         dataSession = urlSession
-        locationsHandler = locationParser
-        localleHandler = localleParser
+        bpiHandler = bpiParser
     }
     
     /// Fetches all locations stored in the remote DB really this method should throw
@@ -83,15 +80,15 @@ class DataManager: NSObject, DataControllerPrototcol {
                 guard let urlResponse = response as? HTTPURLResponse else { return }
                 if  200...299 ~= urlResponse.statusCode {
                     guard let rawdata = data else { return }
-                    strongSelf.locationsHandler.parse(rawValue: rawdata)
-                    guard let val = strongSelf.locationsHandler.mappedValue else { return }
-                    switch val {
-                    case .MappingError:
-                        //handle the parsing error
-                        print ("mapping error \(val.associatedValue())")
-                    case .Value:
-                        strongSelf.locationsHandler.persist(rawJson: val)
-                    }
+//                    strongSelf.locationsHandler.parse(rawValue: rawdata)
+//                    guard let val = strongSelf.locationsHandler.mappedValue else { return }
+//                    switch val {
+//                    case .MappingError:
+//                        //handle the parsing error
+//                        print ("mapping error \(val.associatedValue())")
+//                    case .Value:
+//                        strongSelf.locationsHandler.persist(rawJson: val)
+//                    }
                 }
             } else {
                 //handle the network error
@@ -114,16 +111,16 @@ class DataManager: NSObject, DataControllerPrototcol {
             if error == nil {
                 guard let urlResponse = response as? HTTPURLResponse else {return}
                 if  200...299 ~= urlResponse.statusCode {
-                    guard let rawdata = data else { return }
-                    strongSelf.localleHandler.parse(rawValue: rawdata)
-                    guard let val = strongSelf.localleHandler.mappedValue else { return }
-                    switch val {
-                    case .MappingError:
-                        //handle the parsing error
-                        print ("mapping error \(val.associatedValue())")
-                    case .Value:
-                        strongSelf.localleHandler.persist(rawJson: val)
-                    }
+//                    guard let rawdata = data else { return }
+////                    strongSelf.localleHandler.parse(rawValue: rawdata)
+//                    guard let val = strongSelf.localleHandler.mappedValue else { return }
+//                    switch val {
+//                    case .MappingError:
+//                        //handle the parsing error
+//                        print ("mapping error \(val.associatedValue())")
+//                    case .Value:
+//                        strongSelf.localleHandler.persist(rawJson: val)
+//                    }
                 }
             } else {
                 //handle the network error
