@@ -60,18 +60,7 @@ class MockManagedContext: ManagedContextProtocol {
 class TestSuiteHelpers: NSObject {
     
     enum TestType {
-        case locations
-        case profile
-        case task
-        case activity
-        case localle
-        case localle2
-        case badLocation
-        case badProfile
-        case badTask
-        case badActivity
-        case badLocalle
-        case avatar
+        case currencyPair
     }
     
     static func readLocalData(testCase: TestType) -> Data? {
@@ -79,29 +68,8 @@ class TestSuiteHelpers: NSObject {
         var url: URL?
         
         switch testCase {
-        case .badLocation:
-            url = testBundle.url(forResource: "badLocations", withExtension: "json")
-        case .badProfile:
-            url = testBundle.url(forResource: "badProfiles", withExtension: "json")
-        case .locations:
-            url = testBundle.url(forResource: "locations", withExtension: "json")
-        case .profile:
-            url = testBundle.url(forResource: "profiles", withExtension: "json")
-        case .task:
-            url = testBundle.url(forResource: "tasks", withExtension: "json")
-        case .localle:
-            url = testBundle.url(forResource: "localle3", withExtension: "json")
-        case .localle2:
-            url = testBundle.url(forResource: "localle5", withExtension: "json")
-        case .badTask:
-            url = testBundle.url(forResource: "badTasks", withExtension: "json")
-        case .activity:
-            url = testBundle.url(forResource: "activities", withExtension: "json")
-        case .badActivity:
-            url = testBundle.url(forResource: "badActivities", withExtension: "json")
-        case .avatar:
-            url = testBundle.url(forResource: "zomb", withExtension: "jpg")
-            
+        case .currencyPair:
+            url = testBundle.url(forResource: "basic_eur", withExtension: "json")
         default:
             break
         }
@@ -111,7 +79,7 @@ class TestSuiteHelpers: NSObject {
     
     // for testing without persisting data
     static func createInMemoryContainer (completion: @escaping(ManagedContextProtocol) -> ()) {
-        let container = NSPersistentContainer(name: "AirTasks")
+        let container = NSPersistentContainer(name: "n26")
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
         description.shouldAddStoreAsynchronously = false

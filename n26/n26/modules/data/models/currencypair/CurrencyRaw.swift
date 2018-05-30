@@ -42,8 +42,8 @@ struct CurrencyRaw {
 }
 
 extension CurrencyRaw: Decodable {
-    init(from decoder: Decoder) throws {
-        
+    
+    public init(from decoder: Decoder) throws {
         let responseContainer = try decoder.container(keyedBy: RootKeys.self)
         let bpiContainer = try responseContainer.nestedContainer(keyedBy: BPIKeys.self, forKey: .bpi)
         let currContainer = try bpiContainer.nestedContainer(keyedBy: CurrPairKeys.self, forKey: .currPair)
@@ -53,6 +53,14 @@ extension CurrencyRaw: Decodable {
         updatedAt = try timeContainer.decode(Date.self, forKey: .updatedISO)
         currencyDescription = try currContainer.decode(String.self, forKey: .desc)
         currencyRate = try currContainer.decode(Float.self, forKey: .floatRate)
+    }
+    
+    // internal init for tests
+    internal init() {
+        id = "FOO"
+        updatedAt = Date()
+        currencyDescription = ""
+        currencyRate = 1234.1224
     }
 }
 

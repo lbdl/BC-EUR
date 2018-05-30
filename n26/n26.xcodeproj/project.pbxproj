@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B1D0D8220BF62CD0042D4F0 /* DataManagerTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D0D8120BF62CD0042D4F0 /* DataManagerTestHelpers.swift */; };
 		2BBE70DD20BDAB5200063A67 /* SessionProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE70DB20BDAB5200063A67 /* SessionProtocols.swift */; };
 		2BBE70DE20BDAB5200063A67 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE70DC20BDAB5200063A67 /* DataManager.swift */; };
 		2BBE70E120BDAB9E00063A67 /* Mapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE70DF20BDAB9E00063A67 /* Mapped.swift */; };
@@ -103,6 +104,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2B1D0D8120BF62CD0042D4F0 /* DataManagerTestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerTestHelpers.swift; sourceTree = "<group>"; };
 		2BBE70DB20BDAB5200063A67 /* SessionProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionProtocols.swift; sourceTree = "<group>"; };
 		2BBE70DC20BDAB5200063A67 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		2BBE70DF20BDAB9E00063A67 /* Mapped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mapped.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 		2BBE710320BF01B000063A67 /* testhelpers */ = {
 			isa = PBXGroup;
 			children = (
+				2B1D0D8120BF62CD0042D4F0 /* DataManagerTestHelpers.swift */,
 				2BBE710420BF01CB00063A67 /* TestSuiteHelpers.swift */,
 			);
 			path = testhelpers;
@@ -622,6 +625,7 @@
 				2BBE70F920BEB92F00063A67 /* CurrencyPairTest.swift in Sources */,
 				2BE5F53320BD6EBF00CC1DF8 /* n26Tests.swift in Sources */,
 				2BBE710520BF01CB00063A67 /* TestSuiteHelpers.swift in Sources */,
+				2B1D0D8220BF62CD0042D4F0 /* DataManagerTestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
