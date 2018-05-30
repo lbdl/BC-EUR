@@ -1,2 +1,3 @@
 github "Quick/Nimble" "v7.1.1"
 github "Quick/Quick" "v1.3.0"
+github "ReSwift/ReSwift" "4.0.1"
