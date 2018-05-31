@@ -19,6 +19,7 @@ class CurrencyMapper: JSONMappingProtocol {
     required init(storeManager: PersistenceControllerProtocol, decoder: JSONDecodingProtocol=JSONDecoder()) {
         persistanceManager = storeManager
         self.decoder = decoder
+        self.decoder.dateDecodingStrategy = .iso8601
     }
     
     var rawValue: raw? {

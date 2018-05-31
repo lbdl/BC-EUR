@@ -62,13 +62,26 @@ class MockCurrencyParser: JSONMappingProtocol {
 
 class MockCurrencyJSONDecoder: JSONDecodingProtocol {
     
+    var didCallSetStrategy: Bool?
     var didCallDecode: Bool?
+    
+    var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy {
+        set {
+            self.dateDecodingStrategy = newValue
+            didCallSetStrategy = true
+        }
+        get {
+            return self.dateDecodingStrategy
+        }
+    }
     
     func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable {
         didCallDecode = true
         let tmp = CurrencyRaw()
         return tmp as! T
     }
+    
+    
 }
 
 

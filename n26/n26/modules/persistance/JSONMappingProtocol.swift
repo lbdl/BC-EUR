@@ -11,6 +11,7 @@ import Foundation
 // MARK: JSONDecoding
 protocol JSONDecodingProtocol {
     func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable
+    var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy {get set}
 }
 
 extension JSONDecoder: JSONDecodingProtocol {
