@@ -61,6 +61,8 @@ class TestSuiteHelpers: NSObject {
     
     enum TestType {
         case currencyPair
+        case badCurrencyData
+        case rangedBpiData
     }
     
     static func readLocalData(testCase: TestType) -> Data? {
@@ -70,6 +72,10 @@ class TestSuiteHelpers: NSObject {
         switch testCase {
         case .currencyPair:
             url = testBundle.url(forResource: "basic_eur", withExtension: "json")
+        case .badCurrencyData:
+            url = testBundle.url(forResource: "basic_eur_bad", withExtension: "json")
+        case .rangedBpiData:
+            url = testBundle.url(forResource: "date_range_eur", withExtension: "json")
         default:
             break
         }

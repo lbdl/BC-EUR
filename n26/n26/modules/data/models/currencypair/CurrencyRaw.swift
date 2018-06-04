@@ -8,6 +8,51 @@
 
 import Foundation
 
+struct BPIRaw {
+    enum rangedBPIKeys: String, CodingKey {
+        case bpi, time
+    }
+    
+    enum TimeKeys: String, CodingKey {
+        case updatedISO
+    }
+    let rawBPIs: [String: Float]
+    //let currPairs: [CurrencyRaw]
+}
+
+extension BPIRaw: Decodable {
+    
+    public init(from decoder: Decoder) throws
+    {
+        let container = try decoder.container(keyedBy: rangedBPIKeys.self)
+        let timeContainer = try container.nestedContainer(keyedBy: TimeKeys.self, forKey: .time)
+        let bpiContainer = try container.nestedContainer(keyedBy: AdditionalCodingKeys.self, forKey: .bpi)
+        var raws = [String:Float]()
+        for key in bpiContainer.allKeys {
+            let val = try!  bpiContainer.decode(Float.self, forKey: key)
+            raws[key.stringValue] = val
+        }
+        rawBPIs = raws
+    }
+}
+
+private struct AdditionalCodingKeys: CodingKey
+{
+    var intValue: Int?
+    init?(intValue: Int) {
+        //we aent inrerested in numerics here
+        return nil
+    }
+    
+    var stringValue: String
+    init?(stringValue: String)
+    {
+        self.stringValue = stringValue
+    }
+}
+
+
+
 struct CurrencyRaw {
     
     enum RootKeys: String, CodingKey {

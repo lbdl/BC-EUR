@@ -3,7 +3,7 @@
 //  n26
 //
 //  Created by Timothy Storey on 30/05/2018.
-//Copyright © 2018 BITE-Software. All rights reserved.
+//  Copyright © 2018 BITE-Software. All rights reserved.
 //
 
 import Quick
@@ -11,8 +11,8 @@ import Nimble
 
 @testable import n26
 
-//MARK: - Custom Matchers for associated values
-private func beDecodingError(test: @escaping (Error) -> Void = { _ in }) -> Predicate<Mapped<CurrencyRaw>> {
+//MARK: - Custom Matchers for associated values used in the Mapped generic type
+private func beDecodingError(test: @escaping (Error) -> Void = { _ in }) -> Predicate<Mapped<[CurrencyRaw]>> {
     return Predicate.define("be decoding error") { expression, message in
         if let actual = try expression.evaluate(),
             case let .MappingError(Error) = actual {
@@ -23,11 +23,11 @@ private func beDecodingError(test: @escaping (Error) -> Void = { _ in }) -> Pred
     }
 }
 
-private func beCurrency(test: @escaping (CurrencyRaw) -> Void = { _ in }) -> Predicate<Mapped<CurrencyRaw>> {
+private func beCurrency(test: @escaping ([CurrencyRaw]) -> Void = { _ in }) -> Predicate<Mapped<[CurrencyRaw]>> {
     return Predicate.define("be currency") { expression, message in
         if let actual = try expression.evaluate(),
-            case let .Value(locations) = actual {
-            test(locations)
+            case let .Value(currencies) = actual {
+            test(currencies)
             return PredicateResult(status: .matches, message: message)
         }
         return PredicateResult(status: .fail, message: message)
@@ -51,62 +51,116 @@ class CurrencyPairTest: QuickSpec {
                 sut = CurrencyMapper(storeManager: manager!)
             })
         }
+        
         afterSuite {
             rawData = nil
+            persistentContainer = nil
+            manager = nil
+            sut = nil
         }
+        
         afterEach {
         }
         
-        context("GIVEN a Mapper and JSON") {
-            describe("When we parse a valid JSON structure", {
-                it("Creates a currency struct") {
+        context("GIVEN a CurencyMapper and JSON") {
+            describe("WHEN we parse a valid JSON structure", {
+                it("IT creates a currency struct") {
                     waitUntil { done in
                         sut?.parse(rawValue: rawData!)
-                        expect(sut?.mappedValue).to(beCurrency { currency in
-                            expect(currency).to(beAKindOf(CurrencyRaw.self))
+                        expect(sut?.mappedValue).to(beCurrency { currencies in
+                            expect(currencies).to(beAKindOf(Array<CurrencyRaw>.self))
                         })
                         done()
                     }
                 }
                 
-                it("Creates a struct with the correct date") {
+                it("IT creates a struct with the correct date") {
                     waitUntil { done in
                         sut?.parse(rawValue: rawData!)
-                        expect(sut?.mappedValue).to(beCurrency { currency in
-                            expect(currency.updatedAt.description).to(equal("2018-05-29 15:49:00 +0000"))
+                        expect(sut?.mappedValue).to(beCurrency { currencies in
+                            expect(currencies.first?.updatedAt.description).to(equal("2018-05-29 15:49:00 +0000"))
                         })
                         done()
                     }
                 }
-                it("Creates a struct with the correct float rate"){
+                it("IT creates a struct with the correct float rate"){
                     waitUntil { done in
                         sut?.parse(rawValue: rawData!)
-                        expect(sut?.mappedValue).to(beCurrency { currency in
-                            expect(currency.currencyRate).to(beAKindOf(Float.self))
-                            expect(currency.currencyRate).to(equal(6420.51855))
+                        expect(sut?.mappedValue).to(beCurrency { currencies in
+                            expect(currencies.first?.currencyRate).to(beAKindOf(Float.self))
+                            expect(currencies.first?.currencyRate).to(equal(6420.51855))
                         })
                         done()
                     }
                 }
-                it("Creates a struct with the correct description"){
+                it("IT creates a struct with the correct description"){
                     waitUntil { done in
                         sut?.parse(rawValue: rawData!)
-                        expect(sut?.mappedValue).to(beCurrency { currency in
-                            expect(currency.currencyDescription).to(equal("Euro"))
+                        expect(sut?.mappedValue).to(beCurrency { currencies in
+                            expect(currencies.first?.currencyDescription).to(equal("Euro"))
                         })
                         done()
                     }
                 }
-                it("Creates a struct with the correct identifier"){
+                it("IT creates a struct with the correct identifier"){
                     waitUntil { done in
                         sut?.parse(rawValue: rawData!)
-                        expect(sut?.mappedValue).to(beCurrency { currency in
-                            expect(currency.id).to(equal("EUR"))
+                        expect(sut?.mappedValue).to(beCurrency { currencies in
+                            expect(currencies.first?.id).to(equal("EUR"))
                         })
                         done()
                     }
                 }
             })
+            
+            context("GIVEN a BPIMapper and valid BPI JSON") {
+                
+                var bpiData: Data?
+                
+                beforeEach {
+                    bpiData = TestSuiteHelpers.readLocalData(testCase: .rangedBpiData)
+                }
+                
+                afterEach {
+                    bpiData = nil
+                }
+                
+                describe("WHEN we parse a valid JSON structure", {
+                    it("IT creates a currency struct") {
+                        waitUntil { done in
+                            sut?.parse(rawBpiValue: bpiData!)
+                            expect(sut?.mappedValue).to(beCurrency { currencies in
+                                //expect(currency).to(beAKindOf(Array<CurrencyRaw>.self))
+                            })
+                            done()
+                        }
+                    }
+                })
+            }
+            
+            context("GIVEN bad CURRENCY JSON") {
+                
+                var badData: Data?
+                
+                beforeEach {
+                    badData = TestSuiteHelpers.readLocalData(testCase: .badCurrencyData)
+                }
+                
+                afterEach {
+                    badData = nil
+                }
+                
+                describe("WHEN we parse") {
+                    it("Returns an error") {
+                        waitUntil { done in
+                            sut?.parse(rawValue: badData!)
+                            expect(sut?.mappedValue).to(beDecodingError())
+                            done()
+                        }
+                    }
+                }
+                
+            }
         }
     }
 }

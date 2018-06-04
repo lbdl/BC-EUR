@@ -9,11 +9,13 @@
 import Foundation
 
 class CurrencyMapper: JSONMappingProtocol {
+
+    
     internal var decoder: JSONDecodingProtocol
     internal var mappedValue: MappedValue?
     internal var persistanceManager: PersistenceControllerProtocol
     
-    typealias MappedValue = Mapped<CurrencyRaw>
+    typealias MappedValue = Mapped<[CurrencyRaw]>
     typealias raw = Data
     
     required init(storeManager: PersistenceControllerProtocol, decoder: JSONDecodingProtocol=JSONDecoder()) {
@@ -28,17 +30,35 @@ class CurrencyMapper: JSONMappingProtocol {
         }
     }
     
+    var rawBPIValue: raw? {
+        didSet {
+            parse(rawBpiValue: rawBPIValue!)
+        }
+    }
+    
+    internal func parse(rawBpiValue: Data) {
+        do {
+            let tmp = try decoder.decode(BPIRaw.self, from: rawBpiValue)
+            for rawBPI in tmp.rawBPIs {
+                print("foo")
+            }
+        } catch  let error{
+            let tmp = error as! DecodingError
+            mappedValue = .MappingError(tmp)
+        }
+    }
+    
     internal func parse(rawValue: Data) {
         do {
             let tmp = try decoder.decode(CurrencyRaw.self, from: rawValue)
-            mappedValue = .Value(tmp)
+            mappedValue = .Value([tmp])
         } catch let error {
             let tmp = error as! DecodingError
             mappedValue = .MappingError(tmp)
         }
     }
     
-    internal func persist(rawJson: Mapped<CurrencyRaw>) {
+    internal func persist(rawJson: Mapped<[CurrencyRaw]>) {
         if let obj = rawJson.associatedValue() as? CurrencyRaw {
             persistanceManager.updateContext(block: {
                 //_ = Localle.insert(into: self.persistanceManager, raw: obj)

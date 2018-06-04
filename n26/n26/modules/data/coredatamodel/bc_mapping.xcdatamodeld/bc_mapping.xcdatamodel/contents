@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D102" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="CurrencyMap" representedClassName="CurrencyMap" syncable="YES">
-        <attribute name="dayDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="desc" attributeType="String" syncable="YES"/>
-        <attribute name="id" attributeType="String" syncable="YES"/>
+    <entity name="Currency" representedClassName="Currency" syncable="YES">
+        <attribute name="dayDate" attributeType="String" syncable="YES"/>
+        <attribute name="desc" attributeType="String" defaultValueString="Euro" syncable="YES"/>
+        <attribute name="id" attributeType="String" defaultValueString="EUR" syncable="YES"/>
         <attribute name="rate" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="updatedISO" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <entity name="History" representedClassName="History" syncable="YES">
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="timedelta" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="pairs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CurrencyMap" syncable="YES"/>
+        <relationship name="pairs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Currency" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CurrencyMap" positionX="-900" positionY="-18" width="128" height="118"/>
+        <element name="Currency" positionX="-900" positionY="-18" width="128" height="118"/>
         <element name="History" positionX="-1233" positionY="9" width="128" height="90"/>
     </elements>
 </model>

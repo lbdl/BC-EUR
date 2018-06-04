@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2B1D0D8220BF62CD0042D4F0 /* DataManagerTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D0D8120BF62CD0042D4F0 /* DataManagerTestHelpers.swift */; };
+		2B1D0D8420C018B50042D4F0 /* basic_eur_bad.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B1D0D8320C018B50042D4F0 /* basic_eur_bad.json */; };
+		2B1D0D8620C025710042D4F0 /* PersistenceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D0D8520C025710042D4F0 /* PersistenceManagerTests.swift */; };
+		2B1D0D8820C027830042D4F0 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D0D8720C027830042D4F0 /* Currency.swift */; };
 		2BBE70DD20BDAB5200063A67 /* SessionProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE70DB20BDAB5200063A67 /* SessionProtocols.swift */; };
 		2BBE70DE20BDAB5200063A67 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE70DC20BDAB5200063A67 /* DataManager.swift */; };
 		2BBE70E120BDAB9E00063A67 /* Mapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE70DF20BDAB9E00063A67 /* Mapped.swift */; };
@@ -105,6 +108,9 @@
 
 /* Begin PBXFileReference section */
 		2B1D0D8120BF62CD0042D4F0 /* DataManagerTestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerTestHelpers.swift; sourceTree = "<group>"; };
+		2B1D0D8320C018B50042D4F0 /* basic_eur_bad.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = basic_eur_bad.json; sourceTree = "<group>"; };
+		2B1D0D8520C025710042D4F0 /* PersistenceManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManagerTests.swift; sourceTree = "<group>"; };
+		2B1D0D8720C027830042D4F0 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		2BBE70DB20BDAB5200063A67 /* SessionProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionProtocols.swift; sourceTree = "<group>"; };
 		2BBE70DC20BDAB5200063A67 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		2BBE70DF20BDAB9E00063A67 /* Mapped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mapped.swift; sourceTree = "<group>"; };
@@ -178,6 +184,7 @@
 				2BBE70EC20BEA30900063A67 /* basic_eur.json */,
 				2BBE70EA20BEA30900063A67 /* basic_return.json */,
 				2BBE70EB20BEA30900063A67 /* date_range_eur.json */,
+				2B1D0D8320C018B50042D4F0 /* basic_eur_bad.json */,
 			);
 			path = testassets;
 			sourceTree = "<group>";
@@ -235,6 +242,7 @@
 			children = (
 				2BBE70FD20BEBD0E00063A67 /* CurrencyRaw.swift */,
 				2BBE70FF20BEBD1C00063A67 /* CurrencyMapper.swift */,
+				2B1D0D8720C027830042D4F0 /* Currency.swift */,
 			);
 			path = currencypair;
 			sourceTree = "<group>";
@@ -414,6 +422,7 @@
 		2BE5F57320BD862000CC1DF8 /* persistance */ = {
 			isa = PBXGroup;
 			children = (
+				2B1D0D8520C025710042D4F0 /* PersistenceManagerTests.swift */,
 			);
 			path = persistance;
 			sourceTree = "<group>";
@@ -574,6 +583,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BBE70EF20BEA30900063A67 /* basic_eur.json in Resources */,
+				2B1D0D8420C018B50042D4F0 /* basic_eur_bad.json in Resources */,
 				2BBE70EE20BEA30900063A67 /* date_range_eur.json in Resources */,
 				2BBE70ED20BEA30900063A67 /* basic_return.json in Resources */,
 			);
@@ -611,6 +621,7 @@
 				2BBE70FE20BEBD0E00063A67 /* CurrencyRaw.swift in Sources */,
 				2BBE70E220BDAB9E00063A67 /* JSONMappingProtocol.swift in Sources */,
 				2BBE70E820BDABD500063A67 /* PersistenceManager.swift in Sources */,
+				2B1D0D8820C027830042D4F0 /* Currency.swift in Sources */,
 				2BBE70F720BEAA8F00063A67 /* bc_mapping.xcdatamodeld in Sources */,
 				2BBE70E120BDAB9E00063A67 /* Mapped.swift in Sources */,
 				2BBE70E720BDABD500063A67 /* PersistenceHelper.swift in Sources */,
@@ -626,6 +637,7 @@
 				2BE5F53320BD6EBF00CC1DF8 /* n26Tests.swift in Sources */,
 				2BBE710520BF01CB00063A67 /* TestSuiteHelpers.swift in Sources */,
 				2B1D0D8220BF62CD0042D4F0 /* DataManagerTestHelpers.swift in Sources */,
+				2B1D0D8620C025710042D4F0 /* PersistenceManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
