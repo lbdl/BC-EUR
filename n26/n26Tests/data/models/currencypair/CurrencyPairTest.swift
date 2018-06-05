@@ -125,12 +125,35 @@ class CurrencyPairTest: QuickSpec {
                     bpiData = nil
                 }
                 
-                describe("WHEN we parse a valid JSON structure", {
+                describe("WHEN we parse a valid BPI date ranged JSON structure", {
                     it("IT creates a currency struct") {
                         waitUntil { done in
                             sut?.parse(rawBpiValue: bpiData!)
                             expect(sut?.mappedValue).to(beCurrency { currencies in
-                                //expect(currency).to(beAKindOf(Array<CurrencyRaw>.self))
+                                expect(currencies).to(beAKindOf(Array<CurrencyRaw>.self))
+                            })
+                            done()
+                        }
+                    }
+                    it("IT creates an array with the correct count of objects") {
+                        waitUntil { done in
+                            sut?.parse(rawBpiValue: bpiData!)
+                            expect(sut?.mappedValue).to(beCurrency { currencies in
+                                expect(currencies.count).to(equal(19))
+                            })
+                            done()
+                        }
+                    }
+                    
+                    it("IT creates the correct objects with the correct properties"){
+                        waitUntil { done in
+                            sut?.parse(rawBpiValue: bpiData!)
+                            expect(sut?.mappedValue).to(beCurrency { currencies in
+                                expect(currencies.first?.currencyDescription).to(equal("Euro"))
+                                expect(currencies.first?.id).to(equal("EUR"))
+                                expect(currencies.first?.updatedAt.description).to(equal("2018-05-29 00:03:00 +0000"))
+                                expect(currencies.first?.dayDate).to(equal("2018-05-24"))
+                                expect(currencies.first?.currencyRate).to(equal(6465.738))
                             })
                             done()
                         }

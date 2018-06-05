@@ -14,6 +14,8 @@ class CurrencyMapper: JSONMappingProtocol {
     internal var decoder: JSONDecodingProtocol
     internal var mappedValue: MappedValue?
     internal var persistanceManager: PersistenceControllerProtocol
+    internal var dateFormatter: DateFormatter
+    internal var formatString = "yyyy-MM-dd"
     
     typealias MappedValue = Mapped<[CurrencyRaw]>
     typealias raw = Data
@@ -22,6 +24,8 @@ class CurrencyMapper: JSONMappingProtocol {
         persistanceManager = storeManager
         self.decoder = decoder
         self.decoder.dateDecodingStrategy = .iso8601
+        self.dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = formatString
     }
     
     var rawValue: raw? {
@@ -39,9 +43,12 @@ class CurrencyMapper: JSONMappingProtocol {
     internal func parse(rawBpiValue: Data) {
         do {
             let tmp = try decoder.decode(BPIRaw.self, from: rawBpiValue)
+            var tmpCurrencies = [CurrencyRaw]()
             for rawBPI in tmp.rawBPIs {
-                print("foo")
+                let tmpCurr = CurrencyRaw(rawBpi: rawBPI)
+                tmpCurrencies.append(tmpCurr)
             }
+            mappedValue = .Value(tmpCurrencies)
         } catch  let error{
             let tmp = error as! DecodingError
             mappedValue = .MappingError(tmp)

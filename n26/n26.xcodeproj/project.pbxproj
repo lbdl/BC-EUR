@@ -11,6 +11,7 @@
 		2B1D0D8420C018B50042D4F0 /* basic_eur_bad.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B1D0D8320C018B50042D4F0 /* basic_eur_bad.json */; };
 		2B1D0D8620C025710042D4F0 /* PersistenceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D0D8520C025710042D4F0 /* PersistenceManagerTests.swift */; };
 		2B1D0D8820C027830042D4F0 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D0D8720C027830042D4F0 /* Currency.swift */; };
+		2B1D0D8B20C6E6280042D4F0 /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D0D8A20C6E6280042D4F0 /* DateHelpers.swift */; };
 		2BBE70DD20BDAB5200063A67 /* SessionProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE70DB20BDAB5200063A67 /* SessionProtocols.swift */; };
 		2BBE70DE20BDAB5200063A67 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE70DC20BDAB5200063A67 /* DataManager.swift */; };
 		2BBE70E120BDAB9E00063A67 /* Mapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE70DF20BDAB9E00063A67 /* Mapped.swift */; };
@@ -21,7 +22,6 @@
 		2BBE70ED20BEA30900063A67 /* basic_return.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BBE70EA20BEA30900063A67 /* basic_return.json */; };
 		2BBE70EE20BEA30900063A67 /* date_range_eur.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BBE70EB20BEA30900063A67 /* date_range_eur.json */; };
 		2BBE70EF20BEA30900063A67 /* basic_eur.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BBE70EC20BEA30900063A67 /* basic_eur.json */; };
-		2BBE70F720BEAA8F00063A67 /* bc_mapping.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE70F520BEAA8F00063A67 /* bc_mapping.xcdatamodeld */; };
 		2BBE70F920BEB92F00063A67 /* CurrencyPairTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE70F820BEB92F00063A67 /* CurrencyPairTest.swift */; };
 		2BBE70FE20BEBD0E00063A67 /* CurrencyRaw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE70FD20BEBD0E00063A67 /* CurrencyRaw.swift */; };
 		2BBE710020BEBD1C00063A67 /* CurrencyMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE70FF20BEBD1C00063A67 /* CurrencyMapper.swift */; };
@@ -111,6 +111,7 @@
 		2B1D0D8320C018B50042D4F0 /* basic_eur_bad.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = basic_eur_bad.json; sourceTree = "<group>"; };
 		2B1D0D8520C025710042D4F0 /* PersistenceManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManagerTests.swift; sourceTree = "<group>"; };
 		2B1D0D8720C027830042D4F0 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		2B1D0D8A20C6E6280042D4F0 /* DateHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelpers.swift; sourceTree = "<group>"; };
 		2BBE70DB20BDAB5200063A67 /* SessionProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionProtocols.swift; sourceTree = "<group>"; };
 		2BBE70DC20BDAB5200063A67 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		2BBE70DF20BDAB9E00063A67 /* Mapped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mapped.swift; sourceTree = "<group>"; };
@@ -121,7 +122,6 @@
 		2BBE70EA20BEA30900063A67 /* basic_return.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = basic_return.json; sourceTree = "<group>"; };
 		2BBE70EB20BEA30900063A67 /* date_range_eur.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = date_range_eur.json; sourceTree = "<group>"; };
 		2BBE70EC20BEA30900063A67 /* basic_eur.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = basic_eur.json; sourceTree = "<group>"; };
-		2BBE70F620BEAA8F00063A67 /* bc_mapping.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = bc_mapping.xcdatamodel; sourceTree = "<group>"; };
 		2BBE70F820BEB92F00063A67 /* CurrencyPairTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPairTest.swift; sourceTree = "<group>"; };
 		2BBE70FD20BEBD0E00063A67 /* CurrencyRaw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRaw.swift; sourceTree = "<group>"; };
 		2BBE70FF20BEBD1C00063A67 /* CurrencyMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyMapper.swift; sourceTree = "<group>"; };
@@ -178,6 +178,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B1D0D8920C6E6070042D4F0 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				2B1D0D8A20C6E6280042D4F0 /* DateHelpers.swift */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
 		2BBE70E920BDACEF00063A67 /* testassets */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,14 +195,6 @@
 				2B1D0D8320C018B50042D4F0 /* basic_eur_bad.json */,
 			);
 			path = testassets;
-			sourceTree = "<group>";
-		};
-		2BBE70F020BEA7AF00063A67 /* coredatamodel */ = {
-			isa = PBXGroup;
-			children = (
-				2BBE70F520BEAA8F00063A67 /* bc_mapping.xcdatamodeld */,
-			);
-			path = coredatamodel;
 			sourceTree = "<group>";
 		};
 		2BBE70F120BEA7C100063A67 /* prices */ = {
@@ -305,6 +305,7 @@
 		2BE5F51C20BD6EBF00CC1DF8 /* n26 */ = {
 			isa = PBXGroup;
 			children = (
+				2B1D0D8920C6E6070042D4F0 /* common */,
 				2BE5F56D20BD85C900CC1DF8 /* modules */,
 				2BE5F51D20BD6EBF00CC1DF8 /* AppDelegate.swift */,
 				2BE5F51F20BD6EBF00CC1DF8 /* ViewController.swift */,
@@ -385,7 +386,6 @@
 			isa = PBXGroup;
 			children = (
 				2BBE70FA20BEBCBC00063A67 /* models */,
-				2BBE70F020BEA7AF00063A67 /* coredatamodel */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -621,8 +621,8 @@
 				2BBE70FE20BEBD0E00063A67 /* CurrencyRaw.swift in Sources */,
 				2BBE70E220BDAB9E00063A67 /* JSONMappingProtocol.swift in Sources */,
 				2BBE70E820BDABD500063A67 /* PersistenceManager.swift in Sources */,
+				2B1D0D8B20C6E6280042D4F0 /* DateHelpers.swift in Sources */,
 				2B1D0D8820C027830042D4F0 /* Currency.swift in Sources */,
-				2BBE70F720BEAA8F00063A67 /* bc_mapping.xcdatamodeld in Sources */,
 				2BBE70E120BDAB9E00063A67 /* Mapped.swift in Sources */,
 				2BBE70E720BDABD500063A67 /* PersistenceHelper.swift in Sources */,
 				2BBE710020BEBD1C00063A67 /* CurrencyMapper.swift in Sources */,
@@ -1001,19 +1001,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		2BBE70F520BEAA8F00063A67 /* bc_mapping.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				2BBE70F620BEAA8F00063A67 /* bc_mapping.xcdatamodel */,
-			);
-			currentVersion = 2BBE70F620BEAA8F00063A67 /* bc_mapping.xcdatamodel */;
-			path = bc_mapping.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 2BE5F51220BD6EBF00CC1DF8 /* Project object */;
 }

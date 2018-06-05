@@ -9,6 +9,12 @@
 import Foundation
 
 struct BPIRaw {
+    
+    struct Bpi {
+        let floatValue: Float
+        let dateString: String
+        let updatedAt: Date
+    }
     enum rangedBPIKeys: String, CodingKey {
         case bpi, time
     }
@@ -16,8 +22,8 @@ struct BPIRaw {
     enum TimeKeys: String, CodingKey {
         case updatedISO
     }
-    let rawBPIs: [String: Float]
-    //let currPairs: [CurrencyRaw]
+    
+    let rawBPIs: [Bpi]
 }
 
 extension BPIRaw: Decodable {
@@ -26,21 +32,25 @@ extension BPIRaw: Decodable {
     {
         let container = try decoder.container(keyedBy: rangedBPIKeys.self)
         let timeContainer = try container.nestedContainer(keyedBy: TimeKeys.self, forKey: .time)
+        let time = try timeContainer.decode(Date.self, forKey: .updatedISO)
         let bpiContainer = try container.nestedContainer(keyedBy: AdditionalCodingKeys.self, forKey: .bpi)
-        var raws = [String:Float]()
+        var raws = [Bpi]()
         for key in bpiContainer.allKeys {
             let val = try!  bpiContainer.decode(Float.self, forKey: key)
-            raws[key.stringValue] = val
+            let tmpBPI = Bpi(floatValue: val, dateString: key.stringValue, updatedAt: time)
+            raws.append(tmpBPI)
         }
         rawBPIs = raws
     }
+    
 }
 
 private struct AdditionalCodingKeys: CodingKey
 {
     var intValue: Int?
     init?(intValue: Int) {
-        //we aent inrerested in numerics here
+        // we arent interested in numerics here but we might use them as a key
+        // something like self.stringvalue = "\(intValue!)"
         return nil
     }
     
@@ -50,8 +60,6 @@ private struct AdditionalCodingKeys: CodingKey
         self.stringValue = stringValue
     }
 }
-
-
 
 struct CurrencyRaw {
     
@@ -81,6 +89,7 @@ struct CurrencyRaw {
     
     let id: String
     let updatedAt: Date
+    let dayDate: String?
     let currencyDescription: String
     let currencyRate: Float
     
@@ -98,14 +107,24 @@ extension CurrencyRaw: Decodable {
         updatedAt = try timeContainer.decode(Date.self, forKey: .updatedISO)
         currencyDescription = try currContainer.decode(String.self, forKey: .desc)
         currencyRate = try currContainer.decode(Float.self, forKey: .floatRate)
+        dayDate = DateHelpers.createDayDate(fromDate: updatedAt)
     }
     
-    // internal init for tests
+    // internal init for testing
     internal init() {
-        id = "FOO"
+        id = String()
         updatedAt = Date()
-        currencyDescription = ""
+        currencyDescription = String()
         currencyRate = 1234.1224
+        dayDate = "2018-06-05"
+    }
+    
+    init(rawBpi: BPIRaw.Bpi, idType: String = "EUR", descriptionString: String = "Euro") {
+        id = idType
+        currencyDescription = descriptionString
+        currencyRate = rawBpi.floatValue
+        dayDate = rawBpi.dateString
+        updatedAt = rawBpi.updatedAt
     }
 }
 
