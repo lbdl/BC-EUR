@@ -85,7 +85,7 @@ class TestSuiteHelpers: NSObject {
     
     // for testing without persisting data
     static func createInMemoryContainer (completion: @escaping(ManagedContextProtocol) -> ()) {
-        let container = NSPersistentContainer(name: "n26")
+        let container = NSPersistentContainer(name: "bc_currency")
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
         description.shouldAddStoreAsynchronously = false

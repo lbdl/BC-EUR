@@ -66,9 +66,12 @@ class CurrencyMapper: JSONMappingProtocol {
     }
     
     internal func persist(rawJson: Mapped<[CurrencyRaw]>) {
-        if let obj = rawJson.associatedValue() as? CurrencyRaw {
+        if let obj = rawJson.associatedValue() as? [CurrencyRaw] {
             persistanceManager.updateContext(block: {
-                //_ = Localle.insert(into: self.persistanceManager, raw: obj)
+                _ = obj.map({ [weak self] currencyRaw in
+                    guard let strongSelf = self else { return }
+                    let curr = Currency.insert(into: strongSelf.persistanceManager, raw: currencyRaw)
+                })
             })
         }
     }

@@ -12,6 +12,8 @@
 		2B1D0D8620C025710042D4F0 /* PersistenceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D0D8520C025710042D4F0 /* PersistenceManagerTests.swift */; };
 		2B1D0D8820C027830042D4F0 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D0D8720C027830042D4F0 /* Currency.swift */; };
 		2B1D0D8B20C6E6280042D4F0 /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D0D8A20C6E6280042D4F0 /* DateHelpers.swift */; };
+		2B1D0D9020C730B50042D4F0 /* bc_currency.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D0D8D20C72DF40042D4F0 /* bc_currency.xcdatamodeld */; };
+		2B1D0D9220C734600042D4F0 /* CurrencyPairPersistenceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D0D9120C734600042D4F0 /* CurrencyPairPersistenceTest.swift */; };
 		2BBE70DD20BDAB5200063A67 /* SessionProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE70DB20BDAB5200063A67 /* SessionProtocols.swift */; };
 		2BBE70DE20BDAB5200063A67 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE70DC20BDAB5200063A67 /* DataManager.swift */; };
 		2BBE70E120BDAB9E00063A67 /* Mapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE70DF20BDAB9E00063A67 /* Mapped.swift */; };
@@ -112,6 +114,8 @@
 		2B1D0D8520C025710042D4F0 /* PersistenceManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManagerTests.swift; sourceTree = "<group>"; };
 		2B1D0D8720C027830042D4F0 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		2B1D0D8A20C6E6280042D4F0 /* DateHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelpers.swift; sourceTree = "<group>"; };
+		2B1D0D8E20C72DF40042D4F0 /* bc_currency.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = bc_currency.xcdatamodel; sourceTree = "<group>"; };
+		2B1D0D9120C734600042D4F0 /* CurrencyPairPersistenceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPairPersistenceTest.swift; sourceTree = "<group>"; };
 		2BBE70DB20BDAB5200063A67 /* SessionProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionProtocols.swift; sourceTree = "<group>"; };
 		2BBE70DC20BDAB5200063A67 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		2BBE70DF20BDAB9E00063A67 /* Mapped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mapped.swift; sourceTree = "<group>"; };
@@ -186,6 +190,14 @@
 			path = common;
 			sourceTree = "<group>";
 		};
+		2B1D0D8C20C72DC50042D4F0 /* coredatamodel */ = {
+			isa = PBXGroup;
+			children = (
+				2B1D0D8D20C72DF40042D4F0 /* bc_currency.xcdatamodeld */,
+			);
+			path = coredatamodel;
+			sourceTree = "<group>";
+		};
 		2BBE70E920BDACEF00063A67 /* testassets */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +243,7 @@
 		2BBE70FA20BEBCBC00063A67 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				2B1D0D8C20C72DC50042D4F0 /* coredatamodel */,
 				2BBE70FC20BEBCCF00063A67 /* historicaldata */,
 				2BBE70FB20BEBCC400063A67 /* currencypair */,
 			);
@@ -266,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				2BBE70F820BEB92F00063A67 /* CurrencyPairTest.swift */,
+				2B1D0D9120C734600042D4F0 /* CurrencyPairPersistenceTest.swift */,
 			);
 			path = currencypair;
 			sourceTree = "<group>";
@@ -618,6 +632,7 @@
 				2BE5F51E20BD6EBF00CC1DF8 /* AppDelegate.swift in Sources */,
 				2BBE70DD20BDAB5200063A67 /* SessionProtocols.swift in Sources */,
 				2BBE70E620BDABD500063A67 /* Managed.swift in Sources */,
+				2B1D0D9020C730B50042D4F0 /* bc_currency.xcdatamodeld in Sources */,
 				2BBE70FE20BEBD0E00063A67 /* CurrencyRaw.swift in Sources */,
 				2BBE70E220BDAB9E00063A67 /* JSONMappingProtocol.swift in Sources */,
 				2BBE70E820BDABD500063A67 /* PersistenceManager.swift in Sources */,
@@ -637,6 +652,7 @@
 				2BE5F53320BD6EBF00CC1DF8 /* n26Tests.swift in Sources */,
 				2BBE710520BF01CB00063A67 /* TestSuiteHelpers.swift in Sources */,
 				2B1D0D8220BF62CD0042D4F0 /* DataManagerTestHelpers.swift in Sources */,
+				2B1D0D9220C734600042D4F0 /* CurrencyPairPersistenceTest.swift in Sources */,
 				2B1D0D8620C025710042D4F0 /* PersistenceManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1001,6 +1017,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2B1D0D8D20C72DF40042D4F0 /* bc_currency.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2B1D0D8E20C72DF40042D4F0 /* bc_currency.xcdatamodel */,
+			);
+			currentVersion = 2B1D0D8E20C72DF40042D4F0 /* bc_currency.xcdatamodel */;
+			path = bc_currency.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2BE5F51220BD6EBF00CC1DF8 /* Project object */;
 }

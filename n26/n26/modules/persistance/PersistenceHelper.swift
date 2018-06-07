@@ -12,7 +12,7 @@ import CoreData
 class PersistenceHelper: NSObject {
     
     static func createProductionContainer (completion: @escaping(NSManagedObjectContext) -> ()) {
-        let container = NSPersistentContainer(name: "AirTasks")
+        let container = NSPersistentContainer(name: "bc_currency")
         container.loadPersistentStores { (_, error) in
             guard error == nil else {
                 fatalError("Failed to load store: \(error!)")

@@ -62,7 +62,7 @@ class CurrencyPairTest: QuickSpec {
         afterEach {
         }
         
-        context("GIVEN a CurencyMapper and JSON") {
+        context("GIVEN a CurrencyMapper and JSON") {
             describe("WHEN we parse a valid JSON structure", {
                 it("IT creates a currency struct") {
                     waitUntil { done in
@@ -113,7 +113,7 @@ class CurrencyPairTest: QuickSpec {
                 }
             })
             
-            context("GIVEN a BPIMapper and valid BPI JSON") {
+            context("GIVEN a CurrencyMapper and valid BPI JSON") {
                 
                 var bpiData: Data?
                 

@@ -89,7 +89,7 @@ struct CurrencyRaw {
     
     let id: String
     let updatedAt: Date
-    let dayDate: String?
+    let dayDate: String
     let currencyDescription: String
     let currencyRate: Float
     
@@ -112,9 +112,9 @@ extension CurrencyRaw: Decodable {
     
     // internal init for testing
     internal init() {
-        id = String()
+        id = "Foo"
         updatedAt = Date()
-        currencyDescription = String()
+        currencyDescription = "FooBar"
         currencyRate = 1234.1224
         dayDate = "2018-06-05"
     }
